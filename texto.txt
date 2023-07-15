@@ -13,3 +13,5 @@ Adaptador de LAN inal mbrica Wi-Fi 2:
    Direcci¢n IPv4. . . . . . . . . . . . . . : 10.185.82.119
    M scara de subred . . . . . . . . . . . . : 255.255.252.0
    Puerta de enlace predeterminada . . . . . : 10.185.80.1
+
+console.log("hola mundo 2");
