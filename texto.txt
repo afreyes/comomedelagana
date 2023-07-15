@@ -15,3 +15,5 @@ Adaptador de LAN inal mbrica Wi-Fi 2:
    Puerta de enlace predeterminada . . . . . : 10.185.80.1
 
 console.log("hola mundo 2");
+
+console.log("hola mundo 3");
