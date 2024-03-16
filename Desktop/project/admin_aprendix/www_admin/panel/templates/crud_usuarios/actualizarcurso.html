@@ -1,0 +1,54 @@
+{% extends '../index_master.html' %}
+
+{% block content %}
+
+<div class="right_col" role="main">
+    <h1>Actualizar Curso</h1>
+
+    <form action="{% url 'actualizarcurso' %}" method="POST"> 
+        {% csrf_token %}
+
+        <div class="form-group row">
+            <label for="id_curso" class="col-4 col-form-label">ID del Curso</label> 
+            <div class="col-8">
+                <input id="idcurso" name="idcurso" type="text" class="form-control" value="{{ curso.idcurso }}" readonly>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="nombre" class="col-4 col-form-label">Nombre</label> 
+            <div class="col-8">
+                <input id="nombre" name="nombre" type="text" class="form-control" value="{{ curso.nombre }}">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="descripcion" class="col-4 col-form-label">Descripción</label> 
+            <div class="col-8">
+                <input id="descripcion" name="descripcion" type="text" class="form-control" value="{{ curso.descripcion }}">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="duracion" class="col-4 col-form-label">Duración (en horas)</label> 
+            <div class="col-8">
+                <input id="duracion" name="duracion" type="number" class="form-control" value="{{ curso.duracion }}">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="creditos" class="col-4 col-form-label">Créditos</label> 
+            <div class="col-8">
+                <input id="creditos" name="creditos" type="text" class="form-control" value="{{ curso.creditos }}">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="offset-4 col-8">
+                <button name="submit" type="submit" class="btn btn-primary">Actualizar Curso</button>
+            </div>
+        </div>
+    </form>
+ </div>
+
+{% endblock %}

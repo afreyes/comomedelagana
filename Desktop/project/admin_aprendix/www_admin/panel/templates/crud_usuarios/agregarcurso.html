@@ -1,0 +1,38 @@
+{% extends '../index_master.html' %}
+
+{% block content %}
+<div class="right_col" role="main">
+  <h1>Agregar Curso</h1>
+
+  <form action="{% url 'agregarcurso' %}" method="POST"> 
+    {% csrf_token %}
+    
+    <div class="form-group">
+      <label for="id_curso">ID del Curso</label>
+      <input id="id_curso" name="id_curso" type="number" required class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="nombre">Nombre</label>
+      <input id="nombre" name="nombre" type="text" required class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="descripcion">Descripción</label>
+      <input id="descripcion" name="descripcion" type="text" required class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="duracion">Duración (en horas)</label>
+      <input id="duracion" name="duracion" type="number" required class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="creditos">Créditos</label>
+      <input id="creditos" name="creditos" type="text" required class="form-control">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Agregar Curso</button>
+  </form>
+</div>
+{% endblock %}

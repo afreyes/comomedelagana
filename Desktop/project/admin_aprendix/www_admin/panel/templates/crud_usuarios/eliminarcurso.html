@@ -1,0 +1,73 @@
+{% extends '../index_master.html' %}
+
+{% block content %}
+
+<div class="right_col" role="main">
+    <h1>Eliminar Curso</h1>
+
+    <form id="eliminarForm" action="{% url 'eliminarcurso' %}" method="POST"> 
+        {% csrf_token %}
+
+        <div class="form-group row">
+            <label for="id_curso" class="col-4 col-form-label">ID del Curso</label> 
+            <div class="col-8">
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class="fa fa-id-badge"></i>
+                    </div> 
+                    <select id="id_curso" name="id_curso" class="form-control">
+                        {% for curso in cursos %}
+                            <option value="{{ curso.idcurso }}">{{ curso.idcurso }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="offset-4 col-8">
+                <button id="eliminarBtn" type="button" class="btn btn-danger"><i class="fa fa-trash"></i> Eliminar Curso</button>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+<!-- Modal de Confirmación de Eliminación -->
+<div class="modal fade" id="confirmarModal" tabindex="-1" role="dialog" aria-labelledby="confirmarModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmarModalLabel">Confirmar Eliminación</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>¿Estás seguro de que deseas eliminar el curso con ID:</p>
+                <p id="cursoInfo"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button id="confirmarEliminarBtn" type="button" class="btn btn-danger">Eliminar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Event listener para el botón de eliminar
+    document.getElementById('eliminarBtn').addEventListener('click', function() {
+        var selectedCursoId = document.getElementById('idcurso').value;
+        var selectedCursoName = document.querySelector('select[name="idcurso"] option:checked').textContent;
+        document.getElementById('cursoInfo').textContent = selectedCursoName + ' (' + selectedCursoId + ')';
+        $('#confirmarModal').modal('show');
+    });
+
+    // Event listener para el botón de confirmar eliminación
+    document.getElementById('confirmarEliminarBtn').addEventListener('click', function() {
+        $('#eliminarForm').submit();
+    });
+</script>
+
+{% endblock %}
